@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns: xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <title>My Code Blog</title>
     <!--CSS-->
@@ -7,6 +7,12 @@
     <!--Icons Google API-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
     
 </head>
 
@@ -29,6 +35,7 @@
         </nav>
 
         <div>
+            <th:block th:include="menssagemValidacao"></th:block>
             <form method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" name="titulo" placeholder="Titulo *">
@@ -37,17 +44,25 @@
                     <input type="text" class="form-control" name="autor" placeholder="Autor *">
                 </div>
 
-                <textarea type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
+                <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
 
                 <small class="form-text text-muted">(*) Required</small>
 
                 <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
-                <a href="/post" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+                <a href="/posts" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
 
             </form>
         </div>
 
     </div>
 </section>
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Texto *',
+        tabsize: 2,
+        height: 300
+    });
+</script>
+
 </body>
 </html>
